@@ -637,7 +637,7 @@ OvsPickupCtTupleAsLookupKey(POVS_CT_KEY ctKey, UINT16 zone, OvsFlowKey *flowKey)
         ipAddrSrc = flowKey->ct.tuple_ipv4.ipv4_src;
         ipAddrDst = flowKey->ct.tuple_ipv4.ipv4_dst;
 
-        if ((ipAddr_src > 0 && ipAddr_dst > 0) &&
+        if ((ipAddrSrc > 0 && ipAddrDst > 0) &&
             (zone == flowKey->ct.zone)) {
             /* if the ct tuple_ipv4 in flowKey is not null and ct.zone is same with
              * zone parameter pickup the tuple_ipv4 value as the lookup key
