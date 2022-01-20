@@ -626,12 +626,12 @@ OvsReverseIcmpType(UINT8 type)
     }
 }
 
-static __inline NDIS_STATUS
+static __inline void
 OvsPickupCtTupleAsLookupKey(POVS_CT_KEY ctKey, UINT16 zone, OvsFlowKey *flowKey)
 {
     UINT32 ipAddrSrc = 0, ipAddrDst = 0;
 
-    if (!flowKey || !ctKey) return NDIS_STATUS_SUCCESS;
+    if (!flowKey || !ctKey) return;
 
     if (flowKey->l2.dlType == htons(ETH_TYPE_IPV4)) {
         ipAddrSrc = flowKey->ct.tuple_ipv4.ipv4_src;
@@ -649,7 +649,6 @@ OvsPickupCtTupleAsLookupKey(POVS_CT_KEY ctKey, UINT16 zone, OvsFlowKey *flowKey)
             ctKey->dst.port = flowKey->ct.tuple_ipv4.dst_port;
         }
    }
-   return NDIS_STATUS_SUCCESS;
 }
 
 static __inline NDIS_STATUS
